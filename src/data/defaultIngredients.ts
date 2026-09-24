@@ -85,6 +85,8 @@ export const defaultIngredients: Ingredient[] = [
   defineIngredient('lime-juice', 'Sok limete', 'citrus', 'ml', 800, [1, 10, 1, 0], { limonene: 3, citral: 3, 'gamma-terpinene': 3, 'beta-pinene': 2 }),
   defineIngredient('orange-juice', 'Sok naranče', 'citrus', 'ml', 1000, [5, 4, 0, 0], { limonene: 3, valencene: 2, decanal: 2, linalool: 2, 'ethyl-butanoate': 1 }, { defaultServing: 60 }),
   defineIngredient('grapefruit-juice', 'Sok grejpa', 'citrus', 'ml', 500, [3, 6, 3, 0], { nootkatone: 4, limonene: 3, 'ethyl-butanoate': 1 }, { defaultServing: 60 }),
+  defineIngredient('lemon-peel', 'Kora limuna', 'citrus', 'kom', 20, [0, 0, 2, 0], { limonene: 5, citral: 3, 'beta-pinene': 2, 'gamma-terpinene': 2, geraniol: 1 }, { defaultServing: 1, lowStockThreshold: 5 }),
+  defineIngredient('orange-peel', 'Kora naranče', 'citrus', 'kom', 15, [0, 0, 2, 0], { limonene: 5, decanal: 3, linalool: 2, valencene: 2, citral: 1 }, { defaultServing: 1, lowStockThreshold: 5 }),
 
   // Fruit
   defineIngredient('pineapple-juice', 'Sok ananasa', 'fruit', 'ml', 1000, [6, 4, 0, 0], { 'ethyl-butanoate': 4, furaneol: 3, 'delta-octalactone': 1 }, { defaultServing: 60 }),
@@ -102,6 +104,9 @@ export const defaultIngredients: Ingredient[] = [
   defineIngredient('rosemary', 'Ružmarin (grančica)', 'herb', 'kom', 15, [0, 0, 1, 0], { cineole: 4, 'alpha-pinene': 3, camphor: 3 }, { defaultServing: 1, lowStockThreshold: 3 }),
   defineIngredient('thyme', 'Majčina dušica (grančica)', 'herb', 'kom', 12, [0, 0, 1, 0], { thymol: 5, 'gamma-terpinene': 2, linalool: 1 }, { defaultServing: 1, lowStockThreshold: 3 }),
   defineIngredient('sage', 'Kadulja (listići)', 'herb', 'kom', 20, [0, 0, 1, 0], { thujone: 3, cineole: 3, camphor: 2 }, { defaultServing: 3 }),
+  defineIngredient('pandan', 'Pandan (list)', 'herb', 'kom', 10, [1, 0, 1, 0], { acetylpyrroline: 5, 'cis-3-hexenol': 3 }, { defaultServing: 1, lowStockThreshold: 3 }),
+  defineIngredient('elderflower', 'Cvijet bazge (cvat)', 'herb', 'kom', 12, [1, 0, 0, 0], { hotrienol: 4, 'rose-oxide': 3, linalool: 3, 'cis-3-hexenol': 1 }, { defaultServing: 1, lowStockThreshold: 3 }),
+  defineIngredient('black-tea', 'Crni čaj', 'herb', 'g', 150, [0, 0, 4, 0], { linalool: 3, geraniol: 2, damascenone: 2, 'beta-ionone': 2, 'cis-3-hexenol': 1 }, { defaultServing: 5, lowStockThreshold: 30 }),
   defineIngredient('lavender', 'Lavanda (grančica)', 'herb', 'kom', 0, [0, 0, 1, 0], { linalool: 5, 'linalyl-acetate': 4, camphor: 1 }, { defaultServing: 1, lowStockThreshold: 3 }),
 
   // Spices
@@ -133,4 +138,5 @@ export const defaultIngredients: Ingredient[] = [
 
   // Other
   defineIngredient('egg-white', 'Bjelanjak', 'other', 'kom', 30, [0, 0, 0, 0], {}, { defaultServing: 1 }),
+  defineIngredient('whole-milk', 'Punomasno mlijeko', 'other', 'ml', 2000, [2, 0, 0, 0], { 'delta-decalactone': 2 }, { defaultServing: 50, lowStockThreshold: 500 }),
 ];

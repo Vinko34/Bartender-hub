@@ -2,6 +2,7 @@ import type { CocktailProfile } from '../../domain/cocktailProfile';
 import type { SelectedIngredient } from '../../types/cocktail';
 import { AromaProfileCard } from './AromaProfileCard';
 import { CocktailHeader } from './CocktailHeader';
+import { QuickStart } from './QuickStart';
 import { SelectedIngredientPill } from './SelectedIngredientPill';
 
 interface CocktailWorkbenchProps {
@@ -15,6 +16,7 @@ interface CocktailWorkbenchProps {
   onClear: () => void;
   onBrew: () => void;
   onSave: () => void;
+  onQuickStart: (ingredientIds: string[]) => void;
 }
 
 export function CocktailWorkbench({
@@ -28,6 +30,7 @@ export function CocktailWorkbench({
   onClear,
   onBrew,
   onSave,
+  onQuickStart,
 }: CocktailWorkbenchProps) {
   const hasSelection = selection.length > 0;
 
@@ -57,10 +60,7 @@ export function CocktailWorkbench({
           <AromaProfileCard profile={profile} />
         </>
       ) : (
-        <p className="workbench__empty">
-          Dodaj sastojak iz zalihe s lijeve strane – desno će se pojaviti sve što mu paše po zajedničkim aromatskim
-          spojevima.
-        </p>
+        <QuickStart onStart={onQuickStart} />
       )}
     </section>
   );

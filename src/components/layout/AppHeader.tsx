@@ -1,13 +1,7 @@
 import { useStockContext } from '../../context/StockContext';
+import { PAGE_TABS } from '../../data/navigation';
 import { formatIngredientCount } from '../../domain/formatting';
 import type { AppPage } from '../../types/navigation';
-
-const PAGE_TABS: { page: AppPage; label: string }[] = [
-  { page: 'builder', label: 'Radni stol' },
-  { page: 'recipes', label: 'Recepti' },
-  { page: 'stock', label: 'Zaliha' },
-  { page: 'compounds', label: 'Spojevi' },
-];
 
 interface AppHeaderProps {
   activePage: AppPage;
@@ -21,7 +15,7 @@ export function AppHeader({ activePage, onNavigate }: AppHeaderProps) {
   return (
     <header className="app-header">
       <span className="brand">Cocktail Maister</span>
-      <nav className="tabs">
+      <nav className="tabs" aria-label="Glavna navigacija">
         {PAGE_TABS.map((tab) => (
           <button
             key={tab.page}

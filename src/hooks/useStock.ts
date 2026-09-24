@@ -1,14 +1,24 @@
 import { useCallback, useMemo } from 'react';
 import { defaultIngredients } from '../data/defaultIngredients';
+import { mergeNewDefaultIngredients, readLegacyStock } from '../domain/stockMigration';
 import type { CocktailItem } from '../types/cocktail';
 import type { Ingredient } from '../types/ingredient';
 import { useLocalStorageState } from './useLocalStorageState';
 
-const STOCK_STORAGE_KEY = 'cocktail-maister/stock/v1';
+const LEGACY_STOCK_STORAGE_KEY = 'cocktail-maister/stock/v1';
+/** v2 added peels, pandan, elderflower, tea and milk for the preparations guide. */
+const STOCK_STORAGE_KEY = 'cocktail-maister/stock/v2';
+
+function createInitialStock(): Ingredient[] {
+  const legacyStock = readLegacyStock(LEGACY_STOCK_STORAGE_KEY);
+  return legacyStock ? mergeNewDefaultIngredients(legacyStock, defaultIngredients) : defaultIngredients;
+}
 
 export interface StockApi {
   ingredients: Ingredient[];
   ingredientsById: Map<string, Ingredient>;
+  /** Stock first, falling back to the default catalogue – lets guides show ingredients the bar has deleted. */
+  catalogById: Map<string, Ingredient>;
   saveIngredient: (ingredient: Ingredient) => void;
   removeIngredient: (ingredientId: string) => void;
   adjustQuantity: (ingredientId: string, delta: number) => void;
@@ -17,10 +27,15 @@ export interface StockApi {
 }
 
 export function useStock(): StockApi {
-  const [ingredients, setIngredients] = useLocalStorageState<Ingredient[]>(STOCK_STORAGE_KEY, () => defaultIngredients);
+  const [ingredients, setIngredients] = useLocalStorageState<Ingredient[]>(STOCK_STORAGE_KEY, createInitialStock);
 
   const ingredientsById = useMemo(
     () => new Map(ingredients.map((ingredient) => [ingredient.id, ingredient])),
+    [ingredients],
+  );
+
+  const catalogById = useMemo(
+    () => new Map([...defaultIngredients, ...ingredients].map((ingredient) => [ingredient.id, ingredient])),
     [ingredients],
   );
 
@@ -73,12 +88,13 @@ export function useStock(): StockApi {
     () => ({
       ingredients,
       ingredientsById,
+      catalogById,
       saveIngredient,
       removeIngredient,
       adjustQuantity,
       consumeIngredients,
       resetToDefaults,
     }),
-    [ingredients, ingredientsById, saveIngredient, removeIngredient, adjustQuantity, consumeIngredients, resetToDefaults],
+    [ingredients, ingredientsById, catalogById, saveIngredient, removeIngredient, adjustQuantity, consumeIngredients, resetToDefaults],
   );
 }

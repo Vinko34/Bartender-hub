@@ -35,7 +35,14 @@ export type ChemicalClass =
   | 'pyrazine'
   | 'alkaloid'
   | 'ether'
-  | 'glycoside';
+  | 'glycoside'
+  | 'heterocycle';
+
+/** Where a compound dissolves best – decides which preparation carries it. */
+export type CompoundSolubility = 'water' | 'both' | 'fat';
+
+/** Sensitive = volatile (boils off when simmered) or chemically labile under heat. */
+export type HeatStability = 'stable' | 'sensitive';
 
 export interface AromaCompound {
   id: string;

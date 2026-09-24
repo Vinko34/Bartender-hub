@@ -47,6 +47,7 @@ export const aromaCompounds: AromaCompound[] = [
   // Lactones – coconut, stone fruit, oak
   { id: 'whisky-lactone', name: 'Viski-lakton', formula: 'C9H16O2', chemicalClass: 'lactone', families: ['woody', 'sweet'], descriptors: 'kokos, hrast' },
   { id: 'gamma-decalactone', name: 'γ-Dekalakton', formula: 'C10H18O2', chemicalClass: 'lactone', families: ['fruity', 'sweet'], descriptors: 'breskva, marelica' },
+  { id: 'delta-decalactone', name: 'δ-Dekalakton', formula: 'C10H18O2', chemicalClass: 'lactone', families: ['sweet'], descriptors: 'kremasto, mliječno, kokos' },
   { id: 'delta-octalactone', name: 'δ-Oktalakton', formula: 'C8H14O2', chemicalClass: 'lactone', families: ['tropical', 'sweet'], descriptors: 'kokos, kremasto' },
 
   // Esters – fruit
@@ -70,6 +71,8 @@ export const aromaCompounds: AromaCompound[] = [
   { id: 'beta-ionone', name: 'β-Ionon', formula: 'C13H20O', chemicalClass: 'norisoprenoid', families: ['floral', 'woody'], descriptors: 'ljubičica, cedar' },
   { id: 'raspberry-ketone', name: 'Malinski keton', formula: 'C10H12O2', chemicalClass: 'ketone', families: ['fruity', 'sweet'], descriptors: 'malina' },
   { id: 'cis-3-hexenol', name: 'cis-3-Heksenol', formula: 'C6H12O', chemicalClass: 'alcohol', families: ['green'], descriptors: 'svježe pokošena trava, list' },
+
+  { id: 'acetylpyrroline', name: '2-Acetil-1-pirolin', formula: 'C6H9NO', chemicalClass: 'heterocycle', families: ['nutty', 'sweet'], descriptors: 'pandan, basmati riža, kokice' },
 
   // Bitter & pungent (taste-active, not volatile aroma)
   { id: 'quinine', name: 'Kinin', formula: 'C20H24N2O2', chemicalClass: 'alkaloid', families: ['bitter'], descriptors: 'gorko, kora kininovca (tonik)' },

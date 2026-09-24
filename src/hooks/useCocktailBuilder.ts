@@ -68,6 +68,15 @@ export function useCocktailBuilder(ingredientsById: Map<string, Ingredient>) {
     [setBuilderState],
   );
 
+  const startWithIngredients = useCallback(
+    (ingredients: Ingredient[]) =>
+      setBuilderState({
+        name: '',
+        items: ingredients.map((ingredient) => ({ ingredientId: ingredient.id, amount: ingredient.defaultServing })),
+      }),
+    [setBuilderState],
+  );
+
   const selection = useMemo<SelectedIngredient[]>(
     () =>
       builderState.items.flatMap((item) => {
@@ -88,6 +97,7 @@ export function useCocktailBuilder(ingredientsById: Map<string, Ingredient>) {
     setName,
     clear,
     loadRecipe,
+    startWithIngredients,
   };
 }
 

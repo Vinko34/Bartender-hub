@@ -1,1 +1,1 @@
-export type AppPage = 'builder' | 'stock' | 'compounds' | 'recipes';
+export type AppPage = 'builder' | 'recipes' | 'preparations' | 'compounding' | 'enzymes' | 'stock' | 'compounds';

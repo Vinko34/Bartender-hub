@@ -9,7 +9,7 @@ import { PairingPanel } from './PairingPanel';
 import { StockSidebar } from './StockSidebar';
 
 export function BuilderPage() {
-  const { ingredients, consumeIngredients } = useStockContext();
+  const { ingredients, ingredientsById, consumeIngredients } = useStockContext();
   const { builder, savedRecipes } = useCocktailContext();
   const [includeOutOfStock, setIncludeOutOfStock] = useState(false);
   const suggestions = usePairingSuggestions(builder.selection, ingredients, includeOutOfStock);
@@ -27,6 +27,14 @@ export function BuilderPage() {
     showMessage('Koktel napravljen – zaliha je ažurirana.');
   };
 
+  const handleQuickStart = (ingredientIds: string[]) =>
+    builder.startWithIngredients(
+      ingredientIds.flatMap((ingredientId) => {
+        const ingredient = ingredientsById.get(ingredientId);
+        return ingredient ? [ingredient] : [];
+      }),
+    );
+
   return (
     <main className="workspace">
       <StockSidebar ingredients={ingredients} selectedIds={selectedIds} onToggle={builder.toggleIngredient} />
@@ -41,6 +49,7 @@ export function BuilderPage() {
         onClear={builder.clear}
         onBrew={handleBrew}
         onSave={handleSave}
+        onQuickStart={handleQuickStart}
       />
       <PairingPanel
         suggestions={suggestions}

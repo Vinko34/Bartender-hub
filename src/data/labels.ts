@@ -77,6 +77,7 @@ export const CHEMICAL_CLASS_LABELS: Record<ChemicalClass, string> = {
   alkaloid: 'Alkaloid',
   ether: 'Eter (oksid)',
   glycoside: 'Glikozid',
+  heterocycle: 'Heterociklički spoj',
 };
 
 export const UNTITLED_COCKTAIL_NAME = 'Bez imena';
